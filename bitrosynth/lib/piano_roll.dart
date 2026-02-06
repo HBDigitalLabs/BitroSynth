@@ -151,6 +151,7 @@ class PianoRoll extends CustomPainter {
         String rowOutput = "";
         int currentGlobalCol = 0;
 
+// Filter notes belonging to this row
         List<Note> rowNotes = [];
         for (Note note in notes) {
 
@@ -170,11 +171,13 @@ class PianoRoll extends CustomPainter {
         for (Note note in rowNotes) {
             int noteGlobalStart = note.startCol;
 
+// If gap exists before this note, insert "Silence"
             if (noteGlobalStart > currentGlobalCol) {
                 int gapLength = noteGlobalStart - currentGlobalCol;
                 rowOutput += "C0_${cellMs * gapLength}_0_Silence>";
             }
 
+// Add the note: NoteName_Length_Volume_Waveform
             rowOutput += 
               "${note.noteName}_${cellMs * note.lengthInCols}_1_${waveformTypeToString(note.waveform)}>";
 
@@ -182,13 +185,15 @@ class PianoRoll extends CustomPainter {
         }
         
 
-
+// Remove trailing '>' if exists
         if (rowOutput.isNotEmpty && rowOutput.endsWith('>')) {
           rowOutput = rowOutput.substring(0, rowOutput.length - 1);
         }
-
+ // Add row string to output
         outputPerRow.add(rowOutput);
     }
+
+// Return all rows as list of strings
 
     return outputPerRow;
   }
