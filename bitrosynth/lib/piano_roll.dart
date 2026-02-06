@@ -82,6 +82,7 @@ class PianoRoll extends CustomPainter {
   ) : super(repaint: repaintNotifier){
     width = cols * cellWidth;
     height = rows * cellHeight;
+/* Only select notes for current row, skip empty rows*/
     cellMs = 60000 ~/ (_tempo * _gridDivision);
   }
 
