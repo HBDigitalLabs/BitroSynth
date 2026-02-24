@@ -10,7 +10,5 @@ All third-party libraries used in this project are documented in the `licenses` 
 Starting from version 3.0, this project is licensed under the Apache License, Version 2.0.
 
 ---
-You can contact us via this email: Huseyinberke110@outlook.com
----
 
 ## © 2025 Hüseyin Berke - HBDigitalLabs
